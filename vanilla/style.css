@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
 
 * {
 	padding: 0;
@@ -7,6 +6,8 @@
 	outline: none;
 	border: none;
 	box-sizing: border-box;
+
+	color: #fff;
 }
 
 img {
@@ -19,22 +20,42 @@ a {
 }
 
 body {
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Ubuntu', sans-serif;
 	background-color: #181818;
+	font-size: calc(15px + 0.390625vw);
 }
 
-nav{
+nav {
 	max-width: 1200px;
+	height: 90px;
 	margin: auto;
 	padding: 2rem 1rem;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	gap: 2rem;
+	justify-content: space-evenly;
+	position: sticky;
+	top: 0px;
+	z-index: 10;
+
+	background: transparent;
+	backdrop-filter: blur(5px);
+
+	font-weight: 400;
+}
+
+nav::after {
+	content: "";
+	position: absolute;
+	height: 4px;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	background-color: #207797;
+	border-radius: 10px;
 }
 
 .nav-logo {
-	max-width: 100px;
+	max-width: 70px;
 }
 
 .nav-logo img {
@@ -42,20 +63,23 @@ nav{
 	cursor: default;
 }
 
-.nav-links{
+.nav-links {
 	list-style: none;
+
 	display: flex;
 	align-items: center;
 	gap: 3rem;
+
+	font-weight: 700;
 }
 
-.link a {
+.nav-link a {
 	position: relative;
 	padding-bottom: 0.75rem;
 	color: #fff;
 }
 
-.link a::after {
+.nav-link a::after {
 	content: "";
 	position: absolute;
 	height: 2px;
@@ -64,8 +88,66 @@ nav{
 	left: 0;
 	background-color: #207797;
 	transition: all 0.3s ease;
+	border-radius: 10px;
 }
 
-.link a:hover::after {
+.nav-link a:hover::after {
 	width: 70%;
+}
+
+a.anchor {
+	top: -90px;
+	display: block;
+	position: relative;
+	visibility: hidden;
+}
+
+header {
+	margin: auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+.blur {
+	position: absolute;
+	width: 1000px;
+
+	box-shadow: -500px -32px 1000px 100px #207797;
+	width: 50vmin;
+}
+
+.container {
+	max-width: 50%;
+	margin: auto;
+	padding: 5rem 2rem;
+}
+
+.content {
+	padding-top: 80px;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.content-title {
+	font-weight: 700;
+	font-size: max(9vmin, 20px);
+}
+
+.content-title-inverted {
+	text-decoration: dotted;
+	color: #282828;
+	-webkit-text-stroke-color: #fff;
+	-webkit-text-stroke-width: 2px;
+}
+
+
+.content-subtitle {
+	font-size: max(3vmin, 16px);
+}
+
+.content-subsubtitle {
+	font-style: italic;
+	font-size: max(2vmin, 14px);
 }
