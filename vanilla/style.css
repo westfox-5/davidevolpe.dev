@@ -123,6 +123,12 @@ header {
 	padding: 5rem 2rem;
 }
 
+@media only screen and (max-width: 600px) {
+	.container {
+		max-width: 100%;
+	}
+}
+
 .content {
 	padding-top: 80px;
 	display: flex;
@@ -132,7 +138,7 @@ header {
 
 .content-title {
 	font-weight: 700;
-	font-size: max(9vmin, 20px);
+	font-size: max(9vmin, 50px);
 }
 
 .content-title-inverted {
@@ -144,7 +150,7 @@ header {
 
 
 .content-subtitle {
-	font-size: max(3vmin, 16px);
+	font-size: max(3vmin, 30px);
 }
 
 .content-subsubtitle {
