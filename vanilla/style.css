@@ -127,6 +127,10 @@ header {
 	.container {
 		max-width: 100%;
 	}
+
+	.blur {
+		box-shadow: -250px -32px 1000px 100px #207797;
+	}
 }
 
 .content {
