@@ -1,7 +1,7 @@
-.App {
-  text-align: center;
+.center {
+	text-align: center;
 }
 
-.hhh {
-  height: 100vh;
+.big {
+	font-size: 50px;
 }
