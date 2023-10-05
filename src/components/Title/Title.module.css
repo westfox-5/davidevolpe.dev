@@ -4,6 +4,8 @@
 
 	box-shadow: -500px -32px 1000px 100px #207797;
 	width: 50vmin;
+
+	z-index: -1000;
 }
 
 .container {
