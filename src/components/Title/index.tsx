@@ -9,9 +9,10 @@ const Title = () => {
 
       <div className={classes.content}>
         <div className={classes.content_title}>
-          Hello
-          <br />
-          I'm <span className={classes.content_title_inverted}> Davide! </span>
+          Hello I'm <br />
+          <span className={classes.content_title_inverted}>
+            Davide!
+          </span>
         </div>
         <div className={classes.content_subtitle}>
           I am a passionate software developer,

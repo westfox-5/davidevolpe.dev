@@ -1,69 +1,76 @@
 .nav_wrapper {
-	max-width: 1200px;
-	height: 90px;
-	margin: auto;
-	padding: 2rem 1rem;
-	display: flex;
-	align-items: center;
-	justify-content: space-evenly;
-	position: sticky;
-	top: 0px;
-	z-index: 10;
+  max-width: 1200px;
+  height: 90px;
+  margin: auto;
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: sticky;
+  top: 0px;
+  z-index: 10;
 
-	background: transparent;
-	backdrop-filter: blur(5px);
+  background: transparent;
+  backdrop-filter: blur(5px);
 
-	font-weight: 400;
+  font-weight: 400;
 }
 
 .nav_wrapper::after {
-	content: "";
-	position: absolute;
-	height: 4px;
-	width: 100%;
-	bottom: 0;
-	left: 0;
-	background-color: #207797;
-	border-radius: 10px;
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-accent);
+  border-radius: 10px;
 }
 
 .nav_logo {
-	max-width: 70px;
+  max-width: 70px;
 }
 
 .nav_logo img {
-	border-radius: 20px;
-	cursor: default;
+  border-radius: 20px;
+  cursor: default;
 }
 
 .nav_links {
-	list-style: none;
+  list-style: none;
 
-	display: flex;
-	align-items: center;
-	gap: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
 
-	font-weight: 700;
+  font-weight: 700;
+  font-size: var(--subsubtitle-size);
+}
+
+@media only screen and (max-width: 600px) {
+  .nav_links {
+    font-size: var(--subtitle-size);
+  }
 }
 
 .nav_link a {
-	position: relative;
-	padding-bottom: 0.75rem;
-	color: #fff;
+  position: relative;
+  padding-bottom: 0.75rem;
+  color: var(--color-inverted);
 }
 
 .nav_link a::after {
-	content: "";
-	position: absolute;
-	height: 2px;
-	width: 0;
-	bottom: 0;
-	left: 0;
-	background-color: #207797;
-	transition: all 0.3s ease;
-	border-radius: 10px;
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-accent);
+  transition: all 0.3s ease;
+  border-radius: 10px;
 }
 
 .nav_link a:hover::after {
-	width: 70%;
+  width: 70%;
 }
