@@ -23,16 +23,16 @@ const Header = () => {
 
 
   return (
-    <div>
-      <nav className="nav-wrapper">
+    <div className="nav-wrapper">
+      <nav>
         <ul className="nav-links">
           <li className="nav-link"><a href="#">Davide Volpe</a></li>
         </ul>
 
         <div className="right-section">
           <div className="dark-mode" ref={darkModeRef}>
-            <span className="material-symbols-outlined active">light_mode</span>
-            <span className="material-symbols-outlined">dark_mode</span>
+            <span className="material-symbols-outlined">light_mode</span>
+            <span className="material-symbols-outlined active">dark_mode</span>
           </div>
         </div>
       </nav>
