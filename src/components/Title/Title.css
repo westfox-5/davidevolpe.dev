@@ -31,22 +31,22 @@
   gap: 2rem;
 }
 
-.content_title {
+.content-title {
   font-weight: 700;
-  font-size: var(--title-size);
+  font-size: var(--font-size-title);
 }
 
-.content_title_inverted {
+.content-title-inverted {
   color: var(--background-color);
-  text-shadow: 1px 0 0 var(--color-inverted), 0 1px 0 var(--color-inverted),
-    -1px 0 0 var(--color-inverted), 0 -1px 0 var(--color-inverted);
+  text-shadow: 1px 0 0 var(--color), 0 1px 0 var(--color), -1px 0 0 var(--color),
+    0 -1px 0 var(--color);
 }
 
-.content_subtitle {
-  font-size: var(--subtitle-size);
+.content-subtitle {
+  font-size: var(--font-size-subtitle);
 }
 
-.content_subsubtitle {
+.content-subsubtitle {
   font-style: italic;
-  font-size: var(--subsubtitle-size);
+  font-size: var(--font-size-subsubtitle);
 }

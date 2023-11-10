@@ -1,23 +1,23 @@
-import classes from "./Title.module.css";
+import "./Title.css";
 
 const Title = () => {
   return (
 
-    <div className={classes.container}>
+    <div className="container">
 
-      <span className={classes.blur}></span>
+      <span className="blur"></span>
 
-      <div className={classes.content}>
-        <div className={classes.content_title}>
+      <div className="content">
+        <div className="content-title">
           Hello I'm <br />
-          <span className={classes.content_title_inverted}>
-            Davide!
+          <span className="content-title-inverted">
+            Davide
           </span>
         </div>
-        <div className={classes.content_subtitle}>
+        <div className="content-subtitle">
           I am a passionate software developer,
-          <br /> specialized in backend development...
-          <br /> <span className={classes.content_subsubtitle}>... as you can tell by looking at this website</span>
+          <br /> specialized in backend development
+          <br /> <span className="content-subsubtitle">... just look at this ugly website</span>
         </div>
       </div>
     </div>

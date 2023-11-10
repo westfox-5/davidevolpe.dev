@@ -1,18 +1,28 @@
 :root {
-  --background-color: #181818;
-  --color-inverted: #fff;
-  --color-accent: #207797;
+  --background-color: #efefef;
+  --background-color-light: #69b3ce;
+  --color: #000000;
+  --color-accent: rgb(0, 138, 189);
 
-  --title-size: 100px;
-  --subtitle-size: 60px;
-  --subsubtitle-size: 30px;
+  --font-size-title: 100px;
+  --font-size-subtitle: 60px;
+  --font-size-subsubtitle: 30px;
+
+  --border-radius: 15px;
+}
+
+.dark-mode-variables {
+  --background-color: #181818;
+  --background-color-light: #02435a;
+  --color: #fff;
+  --color-accent: #207797;
 }
 
 @media only screen and (max-width: 600px) {
   :root {
-    --title-size: 60px;
-    --subtitle-size: 30px;
-    --subsubtitle-size: 15px;
+    --font-size-title: 60px;
+    --font-size-subtitle: 30px;
+    --font-size-subsubtitle: 15px;
   }
 }
 
@@ -20,7 +30,8 @@ body {
   background-color: var(--background-color);
 
   font-family: -apple-system, BlinkMacSystemFont, "Ubuntu", sans-serif;
-  font-size: calc(15px + 0.390625vw);
+
+  font-size: var(--font-size-subtitle);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -37,9 +48,17 @@ code {
   border: none;
   box-sizing: border-box;
 
-  color: var(--color-inverted);
+  color: var(--color);
 }
 
 a {
   text-decoration: none;
+}
+
+.center {
+  text-align: center;
+}
+
+.color-accent {
+  color: var(--color-accent);
 }

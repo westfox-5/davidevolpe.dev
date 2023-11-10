@@ -1,11 +1,11 @@
-.nav_wrapper {
+.nav-wrapper {
   max-width: 1200px;
   height: 90px;
   margin: auto;
   padding: 2rem 1rem;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   position: sticky;
   top: 0px;
   z-index: 10;
@@ -16,7 +16,7 @@
   font-weight: 400;
 }
 
-.nav_wrapper::after {
+.nav-wrapper::after {
   content: "";
   position: absolute;
   height: 4px;
@@ -27,16 +27,16 @@
   border-radius: 10px;
 }
 
-.nav_logo {
+.nav-logo {
   max-width: 70px;
 }
 
-.nav_logo img {
+.nav-logo img {
   border-radius: 20px;
   cursor: default;
 }
 
-.nav_links {
+.nav-links {
   list-style: none;
 
   display: flex;
@@ -44,22 +44,22 @@
   gap: 3rem;
 
   font-weight: 700;
-  font-size: var(--subsubtitle-size);
+  font-size: var(--font-size-subsubtitle);
 }
 
 @media only screen and (max-width: 600px) {
-  .nav_links {
-    font-size: var(--subtitle-size);
+  .nav-links {
+    font-size: var(--font-size-subtitle);
   }
 }
 
-.nav_link a {
+.nav-link a {
   position: relative;
   padding-bottom: 0.75rem;
-  color: var(--color-inverted);
+  color: var(--color);
 }
 
-.nav_link a::after {
+.nav-link a::after {
   content: "";
   position: absolute;
   height: 2px;
@@ -71,6 +71,32 @@
   border-radius: 10px;
 }
 
-.nav_link a:hover::after {
+.nav-link a:hover::after {
   width: 70%;
+}
+
+.right-section .dark-mode {
+  background-color: var(--background-color-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 2rem;
+  width: 6rem;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+
+  transition: color 2s;
+}
+
+.right-section .dark-mode span {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-section .dark-mode span.active {
+  background-color: var(--color-accent);
+  border-radius: var(--border-radius);
 }
