@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #efefef;
+  --background-light: #69b3ce;
+  --foreground: #171717;
+  --foreground-accent: #0096cc;
+
+  --font-size-subtitle: 60px;
+  --font-size-subsubtitle: 30px;
+
+  --border-radius: 15px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #181818;
+    --background-light: #02435a;
+    --foreground: #ededed;
+    --foreground-accent: #207797;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  :root {
+    --font-size-title: 60px;
+    --font-size-subtitle: 30px;
+    --font-size-subsubtitle: 15px;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+.blur-bubble {
+  position: absolute;
+  width: 50vmin;
+  z-index: -1000;
+}
+.blur-bubble-left {
+  box-shadow: -500px -32px 500px 100px var(--foreground-accent);
+}
+.blur-bubble-right {
+  box-shadow: 500px 150px 500px 70px var(--foreground-accent);
+}
+
+.text-outline {
+  text-shadow: 1px 0 0 var(--foreground), 0 1px 0 var(--foreground), -1px 0 0 var(--foreground),
+  0 -1px 0 var(--foreground);
+}
