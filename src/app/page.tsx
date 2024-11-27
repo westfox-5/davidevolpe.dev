@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 
+import { motion } from "motion/react";
+
 export default function Home() {
   return (
     <div>
@@ -17,7 +19,7 @@ export default function Home() {
           <a href="https://davidevolpe.dev" className="flex items-center space-x-3 rtl:space-x-reverse">
             <span className="self-center text-3xl lg:text-4xl font-semibold whitespace-nowrap dark:text-white">
               Davide Volpe
-              </span>
+            </span>
           </a>
 
           <div className="w-full md:block md:w-auto text-xl lg:text-xl font-medium">
@@ -43,8 +45,18 @@ export default function Home() {
       </nav>
 
       <div className="flex items-center justify-evenly mx-auto p-4">
-        <span className="blur-bubble blur-bubble-left"></span>
-        <span className="blur-bubble blur-bubble-right"></span>
+        <motion.span className="blur-bubble" animate={['initial']} variants={{
+          initial: {
+            y: [0, -200],
+            x: [0, 500],
+            rotate: [0, -30],
+            scale: [1, 2, 1, 0],
+            transition: {
+              duration: 20,
+              repeat: 0,
+            }
+          }
+        }}></motion.span>
 
         <div className="flex flex-col gap-8 pl-40 py-10">
           <div className="font-extrabold text-5xl lg:text-8xl">

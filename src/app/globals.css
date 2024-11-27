@@ -48,20 +48,14 @@ a {
   text-decoration: none;
 }
 
-
 .blur-bubble {
   position: absolute;
   width: 50vmin;
   z-index: -1000;
-}
-.blur-bubble-left {
   box-shadow: -500px -32px 500px 100px var(--foreground-accent);
-}
-.blur-bubble-right {
-  box-shadow: 500px 150px 500px 70px var(--foreground-accent);
 }
 
 .text-outline {
-  text-shadow: 1px 0 0 var(--foreground), 0 1px 0 var(--foreground), -1px 0 0 var(--foreground),
-  0 -1px 0 var(--foreground);
+  text-shadow: 1px 0 0 var(--foreground), 0 1px 0 var(--foreground),
+    -1px 0 0 var(--foreground), 0 -1px 0 var(--foreground);
 }
