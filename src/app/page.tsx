@@ -1,8 +1,6 @@
 "use client"
 
-import Link from "next/link";
-
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
@@ -25,7 +23,7 @@ export default function Home() {
           <div className="w-full md:block md:w-auto text-xl lg:text-xl font-medium">
             <ul className="flex flex-col p-4 md:p-0 rounded-lg md:flex-row rtl:space-x-reverse">
               <li>
-                <Link href="/static/cv_en.pdf" target="_blank" rel="noopener noreferrer" className="block py-2 md:p-0">
+                <a href="/files/cv_en.pdf" target="_blank" rel="noopener noreferrer" className="block py-2 md:p-0">
                   <span>
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="inline fill-current w-6 mr-2">
                       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
@@ -37,7 +35,7 @@ export default function Home() {
                     </svg>
                     CV
                   </span>
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
