@@ -50,7 +50,7 @@ RUN npm run build
 FROM base AS final
 
 # Use production node environment by default.
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 # Run the application as a non-root user.
 RUN addgroup --system --gid 1001 nodejs
