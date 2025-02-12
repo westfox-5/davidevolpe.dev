@@ -50,7 +50,9 @@ a {
 
 .blur-bubble {
   position: absolute;
-  width: 50vmin;
+  width: 25vmin;
+  height: 15vmin;
+  border-radius: 50%;
   z-index: -1000;
   box-shadow: -500px -32px 500px 100px var(--foreground-accent);
 }

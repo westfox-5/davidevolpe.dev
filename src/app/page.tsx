@@ -47,11 +47,12 @@ export default function Home() {
           initial: {
             y: [0, -200],
             x: [0, 500],
-            rotate: [0, -30],
-            scale: [1, 2, 1, 0],
+            rotate: [0, -30, -45],
+            scale: [1, 1.5, 2, 1.5, 1, 0.5],
             transition: {
               duration: 20,
-              repeat: 0,
+              repeat: Infinity,
+              repeatType: 'reverse'
             }
           }
         }}></motion.span>
