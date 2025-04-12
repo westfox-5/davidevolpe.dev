@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --background: #efefef;
+  --background: #181818;
   --background-light: #69b3ce;
-  --foreground: #171717;
+  --foreground: #efefef;
   --foreground-accent: #0096cc;
 
   --font-size-subtitle: 60px;
@@ -34,6 +34,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
+  overflow: hidden;
 }
 
 * {
@@ -50,11 +51,13 @@ a {
 
 .blur-bubble {
   position: absolute;
-  width: 25vmin;
-  height: 15vmin;
+  width: 200px;
+  height: 200px;
+  z-index: -1;
   border-radius: 50%;
-  z-index: -1000;
-  box-shadow: -500px -32px 500px 100px var(--foreground-accent);
+  filter: blur(40px); /* Effetto sfocato */
+  background-color: var(--foreground-accent);
+  opacity: 0.7; /* Opacità */
 }
 
 .text-outline {
