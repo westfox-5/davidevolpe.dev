@@ -4,7 +4,7 @@
 
 :root {
   --background: #181818;
-  --background-light: #69b3ce;
+  --background-light: #02435a;
   --foreground: #efefef;
   --foreground-accent: #0096cc;
 
@@ -34,7 +34,6 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  overflow: hidden;
 }
 
 * {
@@ -50,7 +49,6 @@ a {
 }
 
 .blur-bubble {
-  position: absolute;
   width: 200px;
   height: 200px;
   z-index: -1;
