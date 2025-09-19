@@ -1,107 +1,89 @@
 "use client"
 
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Home = () => {
-  const [targetPosition, setTargetPosition] = useState({ x: 0, y: 0 });
-  const motionRef = useRef<HTMLDivElement | null>(null);
-  const cvRef = useRef<HTMLDivElement | null>(null);
-  const nameRef = useRef<HTMLSpanElement | null>(null);
-  const backendRef = useRef<HTMLSpanElement | null>(null);
+  // Initial focus animation removed; no scaling state needed currently
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const [isNavHidden, setIsNavHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
-  const [scaleX, setScaleX] = useState(1); // Default scale
-  const [scaleY, setScaleY] = useState(1); // Default scale
-
-  const updateTargetPosition = (ref: React.RefObject<HTMLElement>) => {
-    if (ref.current) {
-      const rect = ref.current.getBoundingClientRect();
-      setTargetPosition({
-        x: rect.left + rect.width / 2, // X centrata
-        y: rect.top + rect.height / 2, // Y centrata
-      });
-    }
+  const getParallaxStyle = (factorX: number, factorY: number) => {
+    const { innerWidth, innerHeight } = window;
+    const normX = (mouse.x / innerWidth) * 2 - 1; // -1 .. 1
+    const normY = (mouse.y / innerHeight) * 2 - 1; // -1 .. 1
+    const translateX = normX * factorX;
+    const translateY = normY * factorY;
+    return {
+      transform: `translate3d(${translateX}px, ${translateY}px, 0)`
+    } as React.CSSProperties;
   };
 
   useEffect(() => {
-    // Aggiorna la posizione iniziale al caricamento
-    updateTargetPosition(nameRef);
-    setScaleX(1.3);
-
-    // Dopo 2 secondi aggiorna la posizione su "backendRef"
-    setTimeout(() => {
-      updateTargetPosition(backendRef);
-      setScaleX(2.3);
-      setScaleY(0.8);
-
-      // Dopo altri 2 secondi aggiorna la posizione su "cvRef"
-      setTimeout(() => {
-        updateTargetPosition(cvRef);
-        setScaleX(0.5);
-        setScaleY(0.5);
-
-        // Dopo altri 2 secondi torna alla posizione iniziale
-        setTimeout(() => {
-          if (motionRef.current) {
-            motionRef.current.style.transition = "opacity 2s ease-out";
-            motionRef.current.style.opacity = "0";
-            setTimeout(() => {
-              motionRef.current?.remove();
-            }, 2500);
-          }
-        }, 3000);
-
-      }, 4000);
-    }, 3000);
-
-    // Aggiungi un event listener per ridimensionamento della finestra
-    const handleResize = () => updateTargetPosition(cvRef);
-    window.addEventListener("resize", handleResize);
-
+    const handleMouseMove = (e: MouseEvent) => {
+      setMouse({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handleMouseMove);
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
+  useEffect(() => {
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      const threshold = 80; // show navbar near top
+      const delta = 5; // minimal movement to toggle
+
+      if (currentY <= threshold) {
+        setIsNavHidden(false);
+      } else if (currentY > lastScrollY + delta) {
+        setIsNavHidden(true);
+      } else if (currentY < lastScrollY - delta) {
+        setIsNavHidden(false);
+      }
+
+      setLastScrollY(currentY);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [lastScrollY]);
+
   return (
     <div>
-      <motion.div
-        ref={motionRef}
-        className="blur-bubble 
-          fixed
-          left-0
-          top-0 
-          w-screen
-          h-screen
-          z-10"
-        initial={{
-          x: targetPosition.x - 100, // Offset per centrare il cerchio
-          y: targetPosition.y - 100, // Offset per centrare il cerchio
-          scaleX: 1,
-          scaleY: 1,
-        }}
-        animate={{
-          x: targetPosition.x - 100, // Offset per centrare il cerchio
-          y: targetPosition.y - 100, // Offset per centrare il cerchio
-          scaleX: scaleX,
-          scaleY: scaleY,
-        }}
-        transition={{
-          duration: 4, // Durata totale di una transizione
-          ease: "easeInOut", // Tipo di transizione
-          times: [0, 0.5, 1], // Tempi per le diverse scale
-        }}
-      ></motion.div>
+      {/* Fixed animated background layer */}
+      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div style={getParallaxStyle(24, 20)}>
+          <div className="bubble-base bubble-xl float-med" style={{ top: "10%", left: "5%" }} />
+        </div>
+        <div style={getParallaxStyle(-20, 24)}>
+          <div className="bubble-base bubble-lg float-med" style={{ top: "35%", right: "10%" }} />
+        </div>
+        <div style={getParallaxStyle(16, -20)}>
+          <div className="bubble-base bubble-md float-med" style={{ bottom: "15%", left: "20%" }} />
+        </div>
+        <div style={getParallaxStyle(-12, 16)}>
+          <div className="bubble-base bubble-sm float-med" style={{ bottom: "5%", right: "20%" }} />
+        </div>
+        <div style={getParallaxStyle(28, -12)}>
+          <div className="bubble-base bubble-lg float-med" style={{ top: "70%", left: "55%" }} />
+        </div>
+      </div>
+      {/* Removed initial focus bubble animation */}
 
-      <nav className="sticky top-0 backdrop-blur
+      <nav className={`fixed top-0 left-0 right-0 z-50 bg-glass transition-transform duration-300 will-change-transform ${isNavHidden ? "-translate-y-full" : "translate-y-0"
+        }`
+        + `
         after:block
         after:absolute
         after:bg-[var(--foreground-accent)]
         after:rounded-lg
         after:h-1
         after:w-full
-        after:content-[' ']">
-        <div className="max-w-screen-xl flex items-center justify-between p-4">
+        after:content-[' ']`}>
+        <div className="max-w-screen-xl mx-auto flex items-center justify-between p-4">
           <a href="#home" className="flex items-center space-x-3 rtl:space-x-reverse">
             <span
               className="self-center text-3xl lg:text-4xl font-semibold whitespace-nowrap dark:text-white"
@@ -131,45 +113,27 @@ const Home = () => {
               <li>
                 <a href="#contact" className="block py-2 md:p-0">Contact</a>
               </li>
-              <li>
-                <a href="/files/cv_en.pdf" target="_blank" rel="noopener noreferrer" className="block py-2 md:p-0">
-                  <span
-                    ref={cvRef}
-                  >
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="inline fill-current w-6 mr-2">
-                      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                      <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                      <g id="SVGRepo_iconCarrier">
-                        <path d="M12 3a1 1 0 0 1 1 1v9.586l2.293-2.293a1 1 0 0 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 1 1 1.414-1.414L11 13.586V4a1 1 0 0 1 1-1Z"></path>
-                        <path d="M6 17a1 1 0 1 0-2 0v.6C4 19.482 5.518 21 7.4 21h9.2c1.882 0 3.4-1.518 3.4-3.4V17a1 1 0 1 0-2 0v.6c0 .778-.622 1.4-1.4 1.4H7.4c-.778 0-1.4-.622-1.4-1.4V17Z"></path>
-                      </g>
-                    </svg>
-                    CV
-                  </span>
-                </a>
-              </li>
+
             </ul>
           </div>
         </div>
       </nav>
 
+      {/* Spacer to offset fixed navbar height */}
+      <div className="h-16" />
+
       <div id="home" className="flex items-center justify-center scroll-mt-16">
-        <div className="flex flex-col gap-8 pl-10 py-10">
+        <div className="flex flex-col gap-8 pl-10 py-10 mt-16">
           <div className="font-extrabold text-5xl lg:text-8xl">
             Hello, I&apos;m <br />
-            <span
-              ref={nameRef} // Set nameRef to this span
-              className="text-[var(--background)] text-outline"
-            >
+            <span className="text-[var(--background)] text-outline">
               Davide
             </span>
           </div>
           <div className="text-3xl lg:text-6xl">
             I am a passionate software developer,
             <br /> specialized in{" "}
-            <span
-              ref={backendRef} // Set backendRef to this span
-            >
+            <span>
               backend
             </span>
             {" "}development
@@ -181,6 +145,15 @@ const Home = () => {
 
       {/* About */}
       <section id="about" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="pointer-events-none absolute -z-10 w-full"
+        >
+          <div className="bubble-base bubble-lg" style={{ top: "-60px", left: "-40px" }} />
+        </motion.div>
         <h2 className="text-3xl lg:text-5xl font-bold mb-6">About</h2>
         <p className="text-lg lg:text-2xl leading-relaxed">
           Software Engineer with strong expertise in backend systems and team leadership.
@@ -190,7 +163,17 @@ const Home = () => {
       </section>
 
       {/* Skills */}
-      <section id="skills" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16">
+      <section id="skills" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16 relative">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 0.65, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="pointer-events-none absolute -z-10"
+          style={{ top: -40, right: -30 }}
+        >
+          <div className="bubble-base bubble-md" />
+        </motion.div>
         <h2 className="text-3xl lg:text-5xl font-bold mb-6">Skills</h2>
         <div className="flex flex-wrap gap-3 text-base lg:text-xl">
           {[
@@ -231,7 +214,17 @@ const Home = () => {
       </section>
 
       {/* Projects */}
-      <section id="projects" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16">
+      <section id="projects" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16 relative">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 0.6, scale: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="pointer-events-none absolute -z-10"
+          style={{ bottom: -80, left: -60 }}
+        >
+          <div className="bubble-base bubble-lg" />
+        </motion.div>
         <h2 className="text-3xl lg:text-5xl font-bold mb-6">Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="rounded-xl border border-[var(--foreground-accent)] p-6">
@@ -262,7 +255,17 @@ const Home = () => {
       </section>
 
       {/* Experience */}
-      <section id="experience" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16">
+      <section id="experience" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16 relative">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 0.6, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="pointer-events-none absolute -z-10"
+          style={{ top: -60, right: -50 }}
+        >
+          <div className="bubble-base bubble-md" />
+        </motion.div>
         <h2 className="text-3xl lg:text-5xl font-bold mb-6">Experience</h2>
         <div className="space-y-6">
           <div className="rounded-xl border border-[var(--foreground-accent)] p-6">
@@ -335,7 +338,17 @@ const Home = () => {
       </section>
 
       {/* Education */}
-      <section id="education" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16">
+      <section id="education" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16 relative">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 0.6, scale: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="pointer-events-none absolute -z-10"
+          style={{ bottom: -60, right: -40 }}
+        >
+          <div className="bubble-base bubble-sm" />
+        </motion.div>
         <h2 className="text-3xl lg:text-5xl font-bold mb-6">Education</h2>
         <div className="rounded-xl border border-[var(--foreground-accent)] p-6">
           <div className="flex items-baseline justify-between">
@@ -363,7 +376,17 @@ const Home = () => {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16">
+      <section id="contact" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16 relative">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 0.65, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="pointer-events-none absolute -z-10"
+          style={{ top: -40, left: -30 }}
+        >
+          <div className="bubble-base bubble-md" />
+        </motion.div>
         <h2 className="text-3xl lg:text-5xl font-bold mb-6">Contact</h2>
         <p className="text-lg lg:text-2xl">Open to collaborations and opportunities. Let&apos;s talk.</p>
         <div className="mt-6 flex flex-wrap gap-4 items-center">

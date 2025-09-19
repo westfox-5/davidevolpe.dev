@@ -36,6 +36,22 @@ body {
   background: var(--background);
 }
 
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -58,7 +74,72 @@ a {
   opacity: 0.7; /* Opacità */
 }
 
+/* Animated background bubbles */
+.bubble-sm {
+  width: 140px;
+  height: 140px;
+}
+.bubble-md {
+  width: 220px;
+  height: 220px;
+}
+.bubble-lg {
+  width: 340px;
+  height: 340px;
+}
+.bubble-xl {
+  width: 460px;
+  height: 460px;
+}
+
+.bubble-base {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(50px);
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    color-mix(in hsl, var(--foreground-accent) 90%, transparent),
+    transparent 70%
+  );
+  opacity: 0.55;
+}
+
+@keyframes floaty {
+  0% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+  25% {
+    transform: translateY(-12px) translateX(6px) scale(1.03);
+  }
+  50% {
+    transform: translateY(4px) translateX(-8px) scale(0.98);
+  }
+  75% {
+    transform: translateY(-10px) translateX(4px) scale(1.02);
+  }
+  100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+}
+
+.float-slow {
+  animation: floaty 16s ease-in-out infinite;
+}
+.float-med {
+  animation: floaty 12s ease-in-out infinite;
+}
+.float-fast {
+  animation: floaty 9s ease-in-out infinite;
+}
+
 .text-outline {
   text-shadow: 1px 0 0 var(--foreground), 0 1px 0 var(--foreground),
     -1px 0 0 var(--foreground), 0 -1px 0 var(--foreground);
+}
+
+/* Glass background helper (for navbar, etc.) */
+.bg-glass {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: color-mix(in hsl, var(--background) 60%, transparent);
 }
