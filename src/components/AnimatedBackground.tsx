@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 
 const AnimatedBackground = () => {
 	const [mouse, setMouse] = useState({ x: 0, y: 0 });
+	const [myWindow, setMyWindow] = useState({ innerWidth: 0, innerHeight: 0 });
 
 	const getParallaxStyle = (factorX: number, factorY: number) => {
-		const { innerWidth, innerHeight } = window;
+		const { innerWidth, innerHeight } = myWindow;
 		const normX = (mouse.x / innerWidth) * 2 - 1;
 		const normY = (mouse.y / innerHeight) * 2 - 1;
 		const translateX = normX * factorX;
@@ -15,6 +16,7 @@ const AnimatedBackground = () => {
 	};
 
 	useEffect(() => {
+		setMyWindow(window);
 		const handleMouseMove = (e: MouseEvent) => setMouse({ x: e.clientX, y: e.clientY });
 		window.addEventListener("mousemove", handleMouseMove);
 		return () => window.removeEventListener("mousemove", handleMouseMove);
