@@ -231,21 +231,21 @@ const Home = () => {
             <h3 className="text-2xl lg:text-3xl font-semibold">Battleship (Multiplayer)</h3>
             <p className="mt-2 text-lg opacity-80">Multiplayer version of the classic game. Angular frontend, NodeJS backend, MongoDB.</p>
             <div className="mt-4 flex gap-4 text-base">
-              <a href="https://github.com/westfox-5" target="_blank" rel="noopener noreferrer" className="underline">Repo</a>
+              <a href="https://github.com/westfox-5/BattleShip" target="_blank" rel="noopener noreferrer" className="underline">Repo</a>
             </div>
           </div>
           <div className="rounded-xl border border-[var(--foreground-accent)] p-6">
             <h3 className="text-2xl lg:text-3xl font-semibold">IO-Lego</h3>
             <p className="mt-2 text-lg opacity-80">Android app to control a Lego EV3 robot via colored cells. Java, Android Studio.</p>
             <div className="mt-4 flex gap-4 text-base">
-              <a href="https://github.com/westfox-5" target="_blank" rel="noopener noreferrer" className="underline">Repo</a>
+              <a href="https://github.com/westfox-5/Io-Lego" target="_blank" rel="noopener noreferrer" className="underline">Repo</a>
             </div>
           </div>
           <div className="rounded-xl border border-[var(--foreground-accent)] p-6">
             <h3 className="text-2xl lg:text-3xl font-semibold">GhidraMetrics</h3>
             <p className="mt-2 text-lg opacity-80">Ghidra plugin computing various metrics on native code. Implemented in Java.</p>
             <div className="mt-4 flex gap-4 text-base">
-              <a href="https://github.com/westfox-5" target="_blank" rel="noopener noreferrer" className="underline">Repo</a>
+              <a href="https://github.com/westfox-5/GhidraMetrics" target="_blank" rel="noopener noreferrer" className="underline">Repo</a>
             </div>
           </div>
         </div>
