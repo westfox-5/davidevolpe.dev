@@ -24,7 +24,7 @@ const Home = () => {
   // CI fetch moved to component
 
   return (
-    <div>
+    <div className="w-full max-w-full overflow-x-hidden">
       <AnimatedBackground />
       <Navbar />
 
@@ -65,8 +65,7 @@ const Home = () => {
 
       <Contact />
 
-      {/* Ops & Delivery */}
-      <section id="ops" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16 relative">
+      <section id="ops" className="mx-auto px-6 py-16 scroll-mt-16 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 0.6, y: 0 }}
@@ -79,12 +78,10 @@ const Home = () => {
         </motion.div>
         <h2 className="text-3xl lg:text-5xl font-bold mb-6">Ops & Delivery</h2>
 
-        {/* CI/CD mini-dashboard (live) */}
         <CiDashboard />
 
         <div className="h-6" />
 
-        {/* Code stats */}
         <CodeStats />
       </section>
     </div>
