@@ -44,7 +44,7 @@ const CodeStats = () => {
 			<div className="flex items-center justify-between flex-wrap gap-4">
 				<div>
 					<h3 className="text-2xl lg:text-3xl font-semibold">Code Stats</h3>
-					<p className="opacity-80 text-base lg:text-lg">Conteggio linee per estensione</p>
+					<p className="opacity-80 text-base lg:text-lg">LOC / extension</p>
 				</div>
 				{loading ? (
 					<span className="px-3 py-1 rounded-md border border-[var(--foreground-accent)]/50">loading…</span>

@@ -49,7 +49,7 @@ const CiDashboard = () => {
 			<div className="flex items-center justify-between flex-wrap gap-4">
 				<div>
 					<h3 className="text-2xl lg:text-3xl font-semibold">CI/CD</h3>
-					<p className="opacity-80 text-base lg:text-lg">Stato ultime pipeline su main</p>
+					<p className="opacity-80 text-base lg:text-lg">Latest github action</p>
 				</div>
 				<div className="flex items-center gap-3 text-sm lg:text-base">
 					{loading ? (
@@ -76,12 +76,12 @@ const CiDashboard = () => {
 				</div>
 				<div className="rounded-lg border border-[var(--foreground-accent)] p-4">
 					<div className="opacity-70">Triggered</div>
-					<div>{ci?.ci?.triggeredAt ? new Date(ci.ci.triggeredAt).toLocaleString() : '—'}</div>
+					<div>{ci?.ci?.triggeredAt ? new Date(ci.ci.triggeredAt).toLocaleString() + "+02:00" : '—'}</div>
 				</div>
 			</div>
 			{ci?.ci?.htmlUrl ? (
 				<div className="mt-4 text-sm">
-					<a href={ci.ci.htmlUrl} target="_blank" rel="noopener noreferrer" className="underline">Apri su GitHub</a>
+					<a href={ci.ci.htmlUrl} target="_blank" rel="noopener noreferrer" className="underline">View on GitHub</a>
 				</div>
 			) : null}
 			{ci?.error ? (

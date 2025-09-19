@@ -15,13 +15,14 @@ const Contact = () => (
 			<div className="bubble-base bubble-md" />
 		</motion.div>
 		<h2 className="text-3xl lg:text-5xl font-bold mb-6">Contact</h2>
-		<p className="text-lg lg:text-2xl">Open to collaborations and opportunities. Let&apos;s talk.</p>
+		<p className="text-lg lg:text-2xl">Open to collaborations and opportunities</p>
 		<div className="mt-6 flex flex-wrap gap-4 items-center">
 			<a href="mailto:volpe_davide@outlook.it" className="px-5 py-3 rounded-md bg-[var(--foreground)] text-[var(--background)] text-lg">
-				Email me
+				Email Me
 			</a>
-			<a href="https://davidevolpe.dev" className="underline text-lg" target="_blank" rel="noopener noreferrer">Website</a>
-			<a href="/files/cv_en.pdf" className="underline text-lg" target="_blank" rel="noopener noreferrer">Download CV</a>
+			<a href="/files/cv_en.pdf" className="px-5 py-3 rounded-md bg-[var(--foreground)] text-[var(--background)] text-lg" target="_blank" rel="noopener noreferrer">
+				Download CV
+			</a>
 		</div>
 	</section>
 );
