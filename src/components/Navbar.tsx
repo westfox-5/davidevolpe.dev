@@ -4,42 +4,12 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
-  const [isNavHidden, setIsNavHidden] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  // const [isNavHidden, setIsNavHidden] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
 
-  // Rilevo se sono su desktop o mobile
-  useEffect(() => {
-    const checkScreen = () => setIsDesktop(window.innerWidth >= 768);
-    checkScreen();
-    window.addEventListener("resize", checkScreen);
-    return () => window.removeEventListener("resize", checkScreen);
-  }, []);
 
   // Effetto scroll solo su desktop
-  useEffect(() => {
-    if (!isDesktop) return;
-
-    const onScroll = () => {
-      const currentY = window.scrollY;
-      const threshold = 80;
-      const delta = 5;
-
-      if (currentY <= threshold) {
-        setIsNavHidden(false);
-      } else if (currentY > lastScrollY + delta) {
-        setIsNavHidden(true);
-      } else if (currentY < lastScrollY - delta) {
-        setIsNavHidden(false);
-      }
-
-      setLastScrollY(currentY);
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [lastScrollY, isDesktop]);
+  // Effetto scroll solo su desktop (disabilitato: variabile rimossa)
 
   // Blocca lo scroll del body quando il menu mobile è aperto
   useEffect(() => {

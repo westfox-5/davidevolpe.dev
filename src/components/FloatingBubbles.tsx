@@ -32,7 +32,6 @@ function getParallaxY(index: number, windowHeight: number, scrollY: number) {
 const FloatingBubbles = () => {
   const [scrollY, setScrollY] = useState(0);
   const [windowHeight, setWindowHeight] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -42,66 +41,38 @@ const FloatingBubbles = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    const ref = containerRef.current;
-    if (!ref) return;
-    const observer = new window.IntersectionObserver(
-      ([entry]) => setIsVisible(entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-    observer.observe(ref);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <div
       ref={containerRef}
       className="pointer-events-none absolute left-0 top-0 w-full max-w-full h-[4000px] z-0 overflow-x-hidden"
-  style={{ minHeight: '100vh', maxWidth: '100vw', overflowX: 'hidden' }}
+      style={{ minHeight: '100vh', maxWidth: '100vw', overflowX: 'hidden' }}
     >
-      {bubbles.map((b, i) => {
-        const bubbleRef = useRef<HTMLDivElement>(null);
-        const [bubbleVisible, setBubbleVisible] = useState(false);
-
-        useEffect(() => {
-          const ref = bubbleRef.current;
-          if (!ref) return;
-          const observer = new window.IntersectionObserver(
-            ([entry]) => setBubbleVisible(entry.isIntersecting),
-            { threshold: 0.1 }
-          );
-          observer.observe(ref);
-          return () => observer.disconnect();
-        }, []);
-
-        return (
-          <motion.div
-            key={i}
-            ref={bubbleRef}
-            initial={{ y: 0, opacity: 0.5 }}
-            animate={bubbleVisible ? {
-              y: getParallaxY(i, windowHeight, scrollY),
-              opacity: 1,
-            } : { y: 0, opacity: 0 }}
-            transition={{
-              y: {
-                repeat: bubbleVisible ? Infinity : 0,
-                repeatType: "reverse",
-                duration: b.duration,
-                ease: "easeInOut",
-                delay: b.delay,
-              },
-              opacity: { duration: 1, delay: b.delay },
-            }}
-            style={{ position: "absolute", ...b.style, pointerEvents: "none" }}
-          >
-            <div
-              className={`bubble-base ${b.size}`}
-              style={b.size === "bubble-xs" ? { width: 70, height: 70 } : {}}
-            />
-          </motion.div>
-        );
-      })}
+      {bubbles.map((b, i) => (
+        <motion.div
+          key={i}
+          initial={{ y: 0, opacity: 0.5 }}
+          animate={{
+            y: getParallaxY(i, windowHeight, scrollY),
+            opacity: 1,
+          }}
+          transition={{
+            y: {
+              repeat: Infinity,
+              repeatType: "reverse",
+              duration: b.duration,
+              ease: "easeInOut",
+              delay: b.delay,
+            },
+            opacity: { duration: 1, delay: b.delay },
+          }}
+          style={{ position: "absolute", ...b.style, pointerEvents: "none" }}
+        >
+          <div
+            className={`bubble-base ${b.size}`}
+            style={b.size === "bubble-xs" ? { width: 70, height: 70 } : {}}
+          />
+        </motion.div>
+      ))}
     </div>
   );
 };
