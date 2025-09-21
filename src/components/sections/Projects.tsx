@@ -1,9 +1,6 @@
 "use client"
 
 
-import { motion } from "framer-motion";
-
-
 const Projects = () => (
 		<>
 		<section id="projects" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16 relative">

@@ -1,8 +1,5 @@
 "use client"
 
-
-import { motion } from "framer-motion";
-
 const About = () => (
 			<>
 			<section id="about" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16">

@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
 const Navbar = dynamic(() => import("../components/Navbar"), { ssr: false });
-const AnimatedBackground = dynamic(() => import("../components/AnimatedBackground"), { ssr: false });
 const CiDashboard = dynamic(() => import("../components/CiDashboard"), { ssr: false });
 const CodeStats = dynamic(() => import("../components/CodeStats"), { ssr: false });
 const About = dynamic(() => import("../components/sections/About"), { ssr: false });
@@ -29,8 +28,7 @@ const Home = () => {
   return (
     <div className="relative w-full max-w-full overflow-x-hidden">
 
-        <AnimatedBackground />
-          <Navbar />
+        <Navbar />
 
           {/* Spacer to offset fixed navbar height */}
           <div className="h-16" />
