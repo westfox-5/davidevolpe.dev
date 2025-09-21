@@ -1,43 +1,48 @@
 "use client"
 
+import { Briefcase } from "lucide-react";
+
 const Experience = () => (
 	<>
-	<section id="experience" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16 relative">
-		<h2 className="text-3xl lg:text-5xl font-bold mb-6">Experience</h2>
-		<div className="space-y-6">
-	<div className="rounded-xl border border-[var(--foreground-accent)] p-6">
-		<div className="flex items-baseline justify-between">
-			<h3 className="text-2xl lg:text-3xl font-semibold">T.A.S. s.p.a</h3>
-			<span className="text-base opacity-75">2024 — Present · Remote</span>
-		</div>
-		<div className="mt-4 grid gap-4">
-			<div className="rounded-lg border border-[var(--foreground-accent)] p-4">
-				<div className="flex items-baseline justify-between">
-					<h4 className="text-xl lg:text-2xl font-semibold">Software Engineer</h4>
-					<span className="text-sm opacity-75">2024 — Present</span>
+		<section id="experience" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16 relative">
+			<h2 className="text-3xl lg:text-5xl font-bold mb-6 flex items-center gap-3">
+				<Briefcase className="w-8 h-8 text-[var(--foreground-accent)]" />
+				Experience
+			</h2>
+			<div className="space-y-6">
+		<div className="rounded-xl border border-[var(--foreground-accent)] p-6">
+			<div className="flex items-baseline justify-between">
+				<h3 className="text-2xl lg:text-3xl font-semibold">T.A.S. s.p.a</h3>
+				<span className="text-base opacity-75">2024 — Present · Remote</span>
+			</div>
+			<div className="mt-4 grid gap-4">
+				<div className="rounded-lg border border-[var(--foreground-accent)] p-4">
+					<div className="flex items-baseline justify-between">
+						<h4 className="text-xl lg:text-2xl font-semibold">Software Engineer</h4>
+						<span className="text-sm opacity-75">2024 — Present</span>
+					</div>
+					<ul className="mt-2 list-disc pl-6 text-base lg:text-lg">
+						<li>Senior Java EE developer in a SCRUM team (multi-team environment).</li>
+						<li>Financial apps for Instant Payments; maintenance of shared libraries.</li>
+						<li>Spring Boot, Spring Batch, MQs, Apache Kafka, Docker, Kubernetes, Helm, GitLab CI/CD.</li>
+					</ul>
 				</div>
-				<ul className="mt-2 list-disc pl-6 text-base lg:text-lg">
-					<li>Senior Java EE developer in a SCRUM team (multi-team environment).</li>
-					<li>Financial apps for Instant Payments; maintenance of shared libraries.</li>
-					<li>Spring Boot, Spring Batch, MQs, Apache Kafka, Docker, Kubernetes, Helm, GitLab CI/CD.</li>
-				</ul>
 			</div>
 		</div>
-	</div>
-	<div className="rounded-xl border border-[var(--foreground-accent)] p-6">
-		<div className="flex items-baseline justify-between">
-			<h3 className="text-2xl lg:text-3xl font-semibold">Technology Reply</h3>
-			<span className="text-base opacity-75">2019 — 2024</span>
-		</div>
-		<div className="mt-4 grid gap-4">
-			<div className="rounded-lg bg-[color-mix(in_hsl,_var(--foreground)_20%,_transparent)]/10 p-4">
-				<div className="flex items-baseline justify-between">
-					<h4 className="text-xl lg:text-2xl font-semibold">Java Developer, Team Leader</h4>
-					<span className="text-sm opacity-75">2022 — 2024</span>
-				</div>
-				<ul className="mt-2 list-disc pl-6 text-base lg:text-lg">
-					<li>Led a team of 4; analysis and data model design.</li>
-					<li>Stakeholder meetings, testbook definition, support to UATs.</li>
+		<div className="rounded-xl border border-[var(--foreground-accent)] p-6">
+			<div className="flex items-baseline justify-between">
+				<h3 className="text-2xl lg:text-3xl font-semibold">Technology Reply</h3>
+				<span className="text-base opacity-75">2019 — 2024</span>
+			</div>
+			<div className="mt-4 grid gap-4">
+				<div className="rounded-lg bg-[color-mix(in_hsl,_var(--foreground)_20%,_transparent)]/10 p-4">
+					<div className="flex items-baseline justify-between">
+						<h4 className="text-xl lg:text-2xl font-semibold">Java Developer, Team Leader</h4>
+						<span className="text-sm opacity-75">2022 — 2024</span>
+					</div>
+					<ul className="mt-2 list-disc pl-6 text-base lg:text-lg">
+						<li>Led a team of 4; analysis and data model design.</li>
+						<li>Stakeholder meetings, testbook definition, support to UATs.</li>
 					<li>Deployments, maintenance, ticket lifecycle management.</li>
 				</ul>
 			</div>

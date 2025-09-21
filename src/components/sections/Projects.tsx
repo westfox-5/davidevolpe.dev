@@ -1,10 +1,14 @@
 "use client"
 
 
+import { FolderGit2 } from "lucide-react";
+
 const Projects = () => (
-		<>
 		<section id="projects" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16 relative">
-			<h2 className="text-3xl lg:text-5xl font-bold mb-6">Projects</h2>
+			<h2 className="text-3xl lg:text-5xl font-bold mb-6 flex items-center gap-3">
+			  <FolderGit2 className="w-8 h-8 text-[var(--foreground-accent)]" />
+			  Projects
+			</h2>
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 				<div className="rounded-xl border border-[var(--foreground-accent)] p-6">
 					<h3 className="text-2xl lg:text-3xl font-semibold">Battleship (Multiplayer)</h3>
@@ -32,7 +36,6 @@ const Projects = () => (
 				More on GitHub: <a href="https://github.com/westfox-5" target="_blank" rel="noopener noreferrer" className="underline">github.com/westfox-5</a>
 			</div>
 		</section>
-	</>
 );
 
 export default Projects;

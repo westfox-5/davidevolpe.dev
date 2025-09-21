@@ -27,26 +27,33 @@ const hardSkills = [
 
 const softSkills = ['Problem solving', 'Attention to detail', 'Mentoring & knowledge sharing'];
 
+import { BadgeCheck } from "lucide-react";
+
 const Skills = () => (
 	<>
 		<section id="skills" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16 relative">
-			<h2 className="text-3xl lg:text-5xl font-bold mb-6">Skills</h2>
-			<div className="flex flex-wrap gap-3 text-base lg:text-xl">
-				{hardSkills.map((skill) => (
-					<span key={skill} className="px-3 py-1 rounded-md bg-[var(--foreground)] text-[var(--background)]">
-						{skill}
-					</span>
-				))}
-			</div>
-			<div className="mt-6 flex flex-wrap gap-3 text-base lg:text-xl opacity-90">
-				{softSkills.map((soft) => (
-					<span key={soft} className="px-3 py-1 rounded-md border border-[var(--foreground-accent)]">
-						{soft}
-					</span>
-				))}
-			</div>
-			<div className="mt-6 text-base lg:text-xl opacity-90">
-				Certifications: OCP 1Z0-815, 1Z0-819 · Java SE 11 Developer
+			<h2 className="text-3xl lg:text-5xl font-bold mb-6 flex items-center gap-3">
+				<BadgeCheck className="w-8 h-8 text-[var(--foreground-accent)]" />
+				Skills
+			</h2>
+			<div className="px-2 md:px-8">
+				<div className="flex flex-wrap gap-3 text-base lg:text-xl">
+					{hardSkills.map((skill) => (
+						<span key={skill} className="px-3 py-1 rounded-md bg-[var(--foreground)] text-[var(--background)]">
+							{skill}
+						</span>
+					))}
+				</div>
+				<div className="mt-6 flex flex-wrap gap-3 text-base lg:text-xl opacity-90">
+					{softSkills.map((soft) => (
+						<span key={soft} className="mr-3 py-1 rounded-md border border-[var(--foreground-accent)]">
+							{soft}
+						</span>
+					))}
+				</div>
+				<div className="mt-6 text-base lg:text-xl opacity-90">
+					Certifications: OCP 1Z0-815, 1Z0-819 · Java SE 11 Developer
+				</div>
 			</div>
 		</section>
 	</>

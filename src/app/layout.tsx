@@ -3,7 +3,9 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 
+
 import FloatingBubbles from "../components/FloatingBubbles";
+import ScrollToTopButton from "../components/ScrollToTopButton";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,11 +31,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-x-hidden">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased container mx-auto`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)]`}
       >
         <FloatingBubbles />
+        <ScrollToTopButton />
         {children}
       </body>
     </html>
