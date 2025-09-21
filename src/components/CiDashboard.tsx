@@ -76,7 +76,7 @@ const CiDashboard = () => {
 				</div>
 				<div className="rounded-lg border border-[var(--foreground-accent)] p-4">
 					<div className="opacity-70">Triggered</div>
-					<div>{ci?.ci?.triggeredAt ? new Date(ci.ci.triggeredAt).toLocaleString() + "+02:00" : '—'}</div>
+					<div>{ci?.ci?.triggeredAt ? new Date(ci.ci.triggeredAt).toLocaleString() +  "UTC" : '—'}</div>
 				</div>
 			</div>
 			{ci?.ci?.htmlUrl ? (
