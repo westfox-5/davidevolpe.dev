@@ -59,14 +59,13 @@ const Navbar = () => {
     <>
       <nav
         className={`
-          fixed top-0 left-0 right-0 z-50 bg-glass w-full max-w-full
-          ${isDesktop ? "transition-transform duration-300 will-change-transform" : ""}
-          ${isDesktop && isNavHidden ? "-translate-y-full" : "translate-y-0"}
+          fixed top-0 left-0 right-0 z-50 bg-glass w-full
+          translate-y-0
           after:block after:absolute after:bg-[var(--foreground-accent)]
-          after:rounded-lg after:h-1 after:w-full after:content-[' ']
+          after:rounded-lg after:h-1 after:w-full after:content-['']
         `}
       >
-        <div className="w-full flex items-center justify-between p-4">
+        <div className="w-full flex items-center justify-between px-4 py-4">
           {/* Titolo */}
           <a href="#home" className="flex items-center space-x-3 rtl:space-x-reverse">
             <span className="self-center text-3xl lg:text-4xl font-semibold whitespace-nowrap dark:text-white">

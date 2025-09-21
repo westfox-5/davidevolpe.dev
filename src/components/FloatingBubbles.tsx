@@ -56,8 +56,8 @@ const FloatingBubbles = () => {
   return (
     <div
       ref={containerRef}
-      className="pointer-events-none absolute left-0 top-0 w-full h-[4000px] z-0"
-      style={{ minHeight: '200vh' }}
+      className="pointer-events-none absolute left-0 top-0 w-full max-w-full h-[4000px] z-0 overflow-x-hidden"
+  style={{ minHeight: '100vh', maxWidth: '100vw', overflowX: 'hidden' }}
     >
       {bubbles.map((b, i) => {
         const bubbleRef = useRef<HTMLDivElement>(null);
