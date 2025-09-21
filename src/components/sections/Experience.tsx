@@ -3,7 +3,6 @@
 
 
 import { motion, useMotionValue, useTransform, useScroll } from "framer-motion";
-import BubblePortal from "../BubblePortal";
 import { useEffect, useState } from "react";
 
 const Experience = () => {
@@ -20,39 +19,8 @@ const Experience = () => {
 	const parallax2 = scrollY * 0.10;
 	const parallax3 = scrollY * 0.18;
 
-	return (
-		<>
-			<BubblePortal>
-				{/* Bolla originale */}
-				<motion.div
-					initial={{ opacity: 0, y: -20 }}
-					animate={{ opacity: 0.6, y: 0 }}
-					transition={{ duration: 0.6, ease: "easeOut" }}
-					style={{ position: "absolute", top: 60 + parallax1, right: 0, pointerEvents: "none", zIndex: 0 }}
-					className="hidden md:block"
-				>
-					<div className="bubble-base bubble-md" />
-				</motion.div>
-				{/* Nuove bolle decorative solo su desktop/tablet, sui bordi */}
-				<motion.div
-					initial={{ opacity: 0, scale: 0.9 }}
-					animate={{ opacity: 0.5, scale: 1 }}
-					transition={{ duration: 0.8, ease: "easeOut" }}
-					style={{ position: "absolute", bottom: -100 + parallax2, left: 0, pointerEvents: "none", zIndex: 0 }}
-					className="hidden md:block"
-				>
-					<div className="bubble-base bubble-lg" />
-				</motion.div>
-				<motion.div
-					initial={{ opacity: 0, scale: 0.9 }}
-					animate={{ opacity: 0.4, scale: 1 }}
-					transition={{ duration: 1, ease: "easeOut" }}
-					style={{ position: "absolute", bottom: -60 - parallax3, right: 0, pointerEvents: "none", zIndex: 0 }}
-					className="hidden md:block"
-				>
-					<div className="bubble-base bubble-sm" />
-				</motion.div>
-			</BubblePortal>
+		return (
+			<>
 			<section id="experience" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16 relative">
 				<h2 className="text-3xl lg:text-5xl font-bold mb-6">Experience</h2>
 				<div className="space-y-6">

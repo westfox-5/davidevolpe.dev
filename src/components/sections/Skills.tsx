@@ -2,7 +2,6 @@
 
 
 import { motion } from "framer-motion";
-import BubblePortal from "../BubblePortal";
 
 
 
@@ -31,16 +30,6 @@ const softSkills = ['Problem solving', 'Attention to detail', 'Mentoring & knowl
 
 const Skills = () => (
   <>
-    <BubblePortal>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 0.65, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        style={{ position: "absolute", top: -40, right: -30, pointerEvents: "none", zIndex: 0 }}
-      >
-        <div className="bubble-base bubble-md" />
-      </motion.div>
-    </BubblePortal>
     <section id="skills" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16 relative">
       <h2 className="text-3xl lg:text-5xl font-bold mb-6">Skills</h2>
       <div className="flex flex-wrap gap-3 text-base lg:text-xl">

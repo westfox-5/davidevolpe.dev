@@ -2,21 +2,10 @@
 
 
 import { motion } from "framer-motion";
-import BubblePortal from "../BubblePortal";
 
 
 const Projects = () => (
-	<>
-		<BubblePortal>
-			<motion.div
-				initial={{ opacity: 0, scale: 0.9 }}
-				animate={{ opacity: 0.6, scale: 1 }}
-				transition={{ duration: 0.6, ease: "easeOut" }}
-				style={{ position: "absolute", bottom: -80, left: -60, pointerEvents: "none", zIndex: 0 }}
-			>
-				<div className="bubble-base bubble-lg" />
-			</motion.div>
-		</BubblePortal>
+		<>
 		<section id="projects" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16 relative">
 			<h2 className="text-3xl lg:text-5xl font-bold mb-6">Projects</h2>
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-6">

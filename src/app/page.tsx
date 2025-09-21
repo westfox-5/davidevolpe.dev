@@ -1,17 +1,19 @@
 "use client"
 
 import { motion } from "framer-motion";
-import Navbar from "../components/Navbar";
-import AnimatedBackground from "../components/AnimatedBackground";
-import CiDashboard from "../components/CiDashboard";
-import CodeStats from "../components/CodeStats";
-import About from "../components/sections/About";
-import Skills from "../components/sections/Skills";
-import Projects from "../components/sections/Projects";
-import Experience from "../components/sections/Experience";
-import Education from "../components/sections/Education";
-import Contact from "../components/sections/Contact";
-import Ops from "../components/sections/Ops";
+import dynamic from "next/dynamic";
+
+const Navbar = dynamic(() => import("../components/Navbar"), { ssr: false });
+const AnimatedBackground = dynamic(() => import("../components/AnimatedBackground"), { ssr: false });
+const CiDashboard = dynamic(() => import("../components/CiDashboard"), { ssr: false });
+const CodeStats = dynamic(() => import("../components/CodeStats"), { ssr: false });
+const About = dynamic(() => import("../components/sections/About"), { ssr: false });
+const Skills = dynamic(() => import("../components/sections/Skills"), { ssr: false });
+const Projects = dynamic(() => import("../components/sections/Projects"), { ssr: false });
+const Experience = dynamic(() => import("../components/sections/Experience"), { ssr: false });
+const Education = dynamic(() => import("../components/sections/Education"), { ssr: false });
+const Contact = dynamic(() => import("../components/sections/Contact"), { ssr: false });
+const Ops = dynamic(() => import("../components/sections/Ops"), { ssr: false });
 
 const Home = () => {
   // Initial focus animation removed; no scaling state needed currently
@@ -56,8 +58,6 @@ const Home = () => {
           <About />
 
           <Skills />
-
-
 
           <Projects />
 

@@ -11,8 +11,8 @@ const AnimatedBackground = () => {
 			const normX = (mouse.x / innerWidth) * 2 - 1;
 			const normY = (mouse.y / innerHeight) * 2 - 1;
 			// Aumenta i fattori per un effetto più marcato
-			const translateX = normX * factorX * 2.2;
-			const translateY = normY * factorY * 2.2;
+			const translateX = normX * factorX;
+			const translateY = normY * factorY;
 			return { transform: `translate3d(${translateX}px, ${translateY}px, 0)` } as React.CSSProperties;
 		};
 
@@ -24,22 +24,13 @@ const AnimatedBackground = () => {
 	}, []);
 
 	return (
-		<div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-			<div style={getParallaxStyle(24, 20)}>
-				<div className="bubble-base bubble-xl float-med" style={{ top: "10%", left: "5%" }} />
-			</div>
-			<div style={getParallaxStyle(-20, 24)}>
-				<div className="bubble-base bubble-lg float-med" style={{ top: "35%", right: "10%" }} />
-			</div>
-			<div style={getParallaxStyle(16, -20)}>
-				<div className="bubble-base bubble-md float-med" style={{ bottom: "15%", left: "20%" }} />
-			</div>
-			<div style={getParallaxStyle(-12, 16)}>
-				<div className="bubble-base bubble-sm float-med" style={{ bottom: "5%", right: "20%" }} />
-			</div>
-			<div style={getParallaxStyle(28, -12)}>
-				<div className="bubble-base bubble-lg float-med" style={{ top: "70%", left: "55%" }} />
-			</div>
+		<div className="pointer-events-none fixed left-0 top-0 w-screen min-h-screen h-full z-0">
+					<div style={getParallaxStyle(24, 20)}>
+						<div className="bubble-base bubble-xl float-med" style={{ top: "-20%", left: "-4%" }} />
+					</div>
+					<div style={getParallaxStyle(-20, 24)}>
+						<div className="bubble-base bubble-lg float-med" style={{ top: "30%", right: "8%" }} />
+					</div>
 		</div>
 	);
 };
