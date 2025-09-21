@@ -6,14 +6,15 @@ const AnimatedBackground = () => {
 	const [mouse, setMouse] = useState({ x: 0, y: 0 });
 	const [myWindow, setMyWindow] = useState({ innerWidth: 0, innerHeight: 0 });
 
-	const getParallaxStyle = (factorX: number, factorY: number) => {
-		const { innerWidth, innerHeight } = myWindow;
-		const normX = (mouse.x / innerWidth) * 2 - 1;
-		const normY = (mouse.y / innerHeight) * 2 - 1;
-		const translateX = normX * factorX;
-		const translateY = normY * factorY;
-		return { transform: `translate3d(${translateX}px, ${translateY}px, 0)` } as React.CSSProperties;
-	};
+		const getParallaxStyle = (factorX: number, factorY: number) => {
+			const { innerWidth, innerHeight } = myWindow;
+			const normX = (mouse.x / innerWidth) * 2 - 1;
+			const normY = (mouse.y / innerHeight) * 2 - 1;
+			// Aumenta i fattori per un effetto più marcato
+			const translateX = normX * factorX * 2.2;
+			const translateY = normY * factorY * 2.2;
+			return { transform: `translate3d(${translateX}px, ${translateY}px, 0)` } as React.CSSProperties;
+		};
 
 	useEffect(() => {
 		setMyWindow(window);

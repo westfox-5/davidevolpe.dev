@@ -1,21 +1,61 @@
 "use client"
 
-import { motion } from "framer-motion";
 
-const Experience = () => (
-	<section id="experience" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16 relative">
-		<motion.div
-			initial={{ opacity: 0, y: -20 }}
-			whileInView={{ opacity: 0.6, y: 0 }}
-			viewport={{ once: true, amount: 0.3 }}
-			transition={{ duration: 0.6, ease: "easeOut" }}
-			className="pointer-events-none absolute -z-10"
-			style={{ top: -60, right: -50 }}
-		>
-			<div className="bubble-base bubble-md" />
-		</motion.div>
-		<h2 className="text-3xl lg:text-5xl font-bold mb-6">Experience</h2>
-		<div className="space-y-6">
+
+import { motion, useMotionValue, useTransform, useScroll } from "framer-motion";
+import BubblePortal from "../BubblePortal";
+import { useEffect, useState } from "react";
+
+const Experience = () => {
+	// Parallax state
+	const [scrollY, setScrollY] = useState(0);
+	useEffect(() => {
+		const handleScroll = () => setScrollY(window.scrollY);
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
+
+	// Parallax factors
+	const parallax1 = scrollY * 0.15;
+	const parallax2 = scrollY * 0.10;
+	const parallax3 = scrollY * 0.18;
+
+	return (
+		<>
+			<BubblePortal>
+				{/* Bolla originale */}
+				<motion.div
+					initial={{ opacity: 0, y: -20 }}
+					animate={{ opacity: 0.6, y: 0 }}
+					transition={{ duration: 0.6, ease: "easeOut" }}
+					style={{ position: "absolute", top: 60 + parallax1, right: 0, pointerEvents: "none", zIndex: 0 }}
+					className="hidden md:block"
+				>
+					<div className="bubble-base bubble-md" />
+				</motion.div>
+				{/* Nuove bolle decorative solo su desktop/tablet, sui bordi */}
+				<motion.div
+					initial={{ opacity: 0, scale: 0.9 }}
+					animate={{ opacity: 0.5, scale: 1 }}
+					transition={{ duration: 0.8, ease: "easeOut" }}
+					style={{ position: "absolute", bottom: -100 + parallax2, left: 0, pointerEvents: "none", zIndex: 0 }}
+					className="hidden md:block"
+				>
+					<div className="bubble-base bubble-lg" />
+				</motion.div>
+				<motion.div
+					initial={{ opacity: 0, scale: 0.9 }}
+					animate={{ opacity: 0.4, scale: 1 }}
+					transition={{ duration: 1, ease: "easeOut" }}
+					style={{ position: "absolute", bottom: -60 - parallax3, right: 0, pointerEvents: "none", zIndex: 0 }}
+					className="hidden md:block"
+				>
+					<div className="bubble-base bubble-sm" />
+				</motion.div>
+			</BubblePortal>
+			<section id="experience" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16 relative">
+				<h2 className="text-3xl lg:text-5xl font-bold mb-6">Experience</h2>
+				<div className="space-y-6">
 			<div className="rounded-xl border border-[var(--foreground-accent)] p-6">
 				<div className="flex items-baseline justify-between">
 					<h3 className="text-2xl lg:text-3xl font-semibold">T.A.S. s.p.a</h3>
@@ -82,9 +122,12 @@ const Experience = () => (
 					<li>Web app to handle and visualize graphs from CSV open data using Angular, NodeJS, MongoDB.</li>
 				</ul>
 			</div>
-		</div>
-	</section>
-);
+
+					</div>
+				</section>
+			</>
+		);
+	};
 
 export default Experience;
 

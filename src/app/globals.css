@@ -39,13 +39,15 @@ body {
 html,
 body {
   width: 100%;
-  overflow-x: hidden;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+html, body, #__next {
+overflow-x: hidden;
+}
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -95,13 +97,25 @@ a {
 .bubble-base {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(50px);
+  filter: blur(100px);
   background: radial-gradient(
     50% 50% at 50% 50%,
     color-mix(in hsl, var(--foreground-accent) 90%, transparent),
     transparent 70%
   );
-  opacity: 0.55;
+  opacity: 0.4;
+}
+
+@media (min-width: 768px) {
+  .bubble-base {
+    opacity: 0.7;
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      color-mix(in hsl, var(--foreground-accent) 98%, white 30%),
+      transparent 60%
+    );
+    filter: blur(80px) brightness(1.2) saturate(1.5);
+  }
 }
 
 @keyframes floaty {
