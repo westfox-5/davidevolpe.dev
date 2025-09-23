@@ -8,6 +8,12 @@
   --foreground: #efefef;
   --foreground-accent: #0096cc;
 
+  /* Light mode colors */
+  --background-lightmode: #f7fafc;
+  --background-lightmode-accent: #e2e8f0;
+  --foreground-lightmode: #181818;
+  --foreground-accent-lightmode: #0096cc;
+
   --font-size-subtitle: 60px;
   --font-size-subsubtitle: 30px;
 
@@ -23,6 +29,15 @@
   }
 }
 
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: var(--background-lightmode);
+    --background-light: var(--background-lightmode-accent);
+    --foreground: var(--foreground-lightmode);
+    --foreground-accent: var(--foreground-accent-lightmode);
+  }
+}
+
 @media only screen and (max-width: 600px) {
   :root {
     --font-size-title: 60px;
@@ -34,6 +49,9 @@
 body {
   color: var(--foreground);
   background: var(--background);
+  transition:
+    background 0.8s cubic-bezier(0.77,0,0.175,1),
+    color 0.8s cubic-bezier(0.77,0,0.175,1);
 }
 
 html,
