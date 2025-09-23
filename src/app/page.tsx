@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-  <div className="relative w-full max-w-full px-2 md:max-w-screen-xl md:mx-auto">
+      <div className="relative w-full max-w-full px-2 md:max-w-screen-xl md:mx-auto">
         <div id="home" className="flex flex-col items-center justify-center scroll-mt-16 w-full">
           <div className="flex flex-col items-center justify-center gap-8 py-10 mt-16 w-full">
             <div className="font-extrabold text-6xl lg:text-8xl text-center">
