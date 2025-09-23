@@ -4,6 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 
+type Bubble = {
+  size: string;
+  style: React.CSSProperties;
+};
 
 const bubbleSizes = ["bubble-sm", "bubble-md", "bubble-lg", "bubble-xl"];
 
@@ -33,9 +37,8 @@ function getParallaxY(index: number, scrollDelta: number) {
 
 const FloatingBubbles = () => {
   // Stato per le bolle random
-  const [bubbles, setBubbles] = useState<any[]>([]);
+  const [bubbles, setBubbles] = useState<Bubble[]>([]);
   const [mounted, setMounted] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [scrollDelta, setScrollDelta] = useState(0);
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -54,7 +57,6 @@ const FloatingBubbles = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY);
       setScrollDelta((window.scrollY - lastScrollY) * 20 * -1);
       setLastScrollY(window.scrollY);
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
